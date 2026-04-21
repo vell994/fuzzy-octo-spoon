@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конструктор дипломов</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Библиотеки для генерации PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container"> 
+    <!-- Форма ввода -->
+    <div class="card">
+      <h1>Данные для диплома</h1>
+      <label>Имя <input type="text" id="name"></label>
+      <label>Степень <input type="text" id="degree"></label>
+      <label>Программа <input type="text" id="program"></label>
+      <label>Учебное заведение <input type="text" id="university"></label>
+      <label>Дата выдачи <input type="date" id="date"></label>
+      <label>Город <input type="text" id="city"></label>
+      <label>Доп. подпись / примечания <textarea id="notes"></textarea></label>
+      <label>Подпись должности (напр. ректорат) <input type="text" id="signature"></label>
+      
+      <div class="actions">
+        <button id="clearBtn" class="secondary">Очистить</button>
+        <button id="generateBtn" class="primary">Обновить предпросмотр</button>
+        <!-- Новые кнопки -->
+        <button id="downloadPdfBtn" class="primary">📥 Скачать PDF</button>
+        <button id="emailBtn" class="secondary">📧 Отправить по почте</button>
+      </div>
+    </div>
+
+    <!-- Предпросмотр -->
+    <div class="card preview">
+      <div id="diploma" class="diploma">
+        <h2 id="diplomaTitle" class="title">Диплом об образовании</h2>
+        <p id="diplomaSubtitle" class="subtitle">Учебное заведение | Город</p>
+        
+        <div class="row"><span class="label">Студент:</span> <span id="pStudent" class="value">Иван Иванов</span></div>
+        <div class="row"><span class="label">Степень:</span> <span id="pDegree" class="value">...</span></div>
+        <div class="row"><span class="label">Программа:</span> <span id="pProgram" class="value">...</span></div>
+        <div class="row"><span class="label">Учебное заведение:</span> <span id="pUniversity" class="value">...</span></div>
+        <div class="row"><span class="label">Дата:</span> <span id="pDate" class="value">Дата выдачи</span></div>
+        
+        <div class="signature">
+          <span id="pSignature">Должность / подпись</span>
+        </div>
+        <p class="footer">Пример изображения диплома будет ниже в режиме предпросмотра.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
